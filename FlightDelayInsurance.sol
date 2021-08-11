@@ -141,7 +141,7 @@ contract FlightDelayInsurance{
     */
     function orderInsurance(string memory _flightID) public payable flightExist(_flightID){
         require(msg.value >= 0.01 ether && msg.value <= 0.06 ether, "You can only pay between 0.01 to 0.06 ether for the premium!");
-        require(flightID[_flightID].departTime - block.timestamp >= 12 hours, "You can only buy this insurance at least 12 hours before your flight departuret!");
+        require(flightID[_flightID].departTime - block.timestamp >= 12 hours, "You can only buy this insurance at least 12 hours before your flight departure!");
         
         /*
             There must be enough ether available in smart contract to pay the customer
@@ -161,7 +161,7 @@ contract FlightDelayInsurance{
         This function will pay the customer automatically if the event fulfill the condition of the ordered insurace
     */
     function registerFlightEvent(string memory _flightID, uint _delayDuration, uint _delayReason) public onlyRegisteredAirline flightFinished(_flightID){
-        //comparing string of airline name from flight data and airline account (only the right airline can access a specific)
+        //comparing string of airline name from flight data and airline account (only the right airline can access a specific flight)
         require(keccak256(abi.encodePacked(flightID[_flightID].airline)) == keccak256(abi.encodePacked(airlineName[msg.sender])), "Please enter the flight from your airline!");
         
         flightID[_flightID].delayDuration = _delayDuration;
