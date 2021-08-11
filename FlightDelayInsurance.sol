@@ -190,13 +190,13 @@ contract FlightDelayInsurance{
         */
         if(flightID[_flightID].delayReason == Delayed.Canceled){ 
             for(uint i = 0; i < flightID[_flightID].orders.length; i++){
-                lockedBalance -= flightID[_flightID].orders[i].premiumPaid * 3;
+                lockedBalance -= flightID[_flightID].orders[i].premiumPaid * 3; //ether unlocked
                 payable(flightID[_flightID].orders[i].customer).transfer(flightID[_flightID].orders[i].premiumPaid);
             }
         } else if(flightID[_flightID].delayReason != Delayed.Canceled && flightID[_flightID].delayReason != Delayed.None){
             if(_delayDuration >= 45){
                 for(uint i = 0; i < flightID[_flightID].orders.length; i++){
-                    lockedBalance -= flightID[_flightID].orders[i].premiumPaid * 3;
+                    lockedBalance -= flightID[_flightID].orders[i].premiumPaid * 3; //ether unlocked
                     payable(flightID[_flightID].orders[i].customer).transfer(flightID[_flightID].orders[i].premiumPaid * 3);
                 }
             }
