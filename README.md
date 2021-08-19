@@ -1,5 +1,5 @@
 # Flight-Delay-Insurance-Smart-Contract
-##Project Explanation
+## Project Explanation
 This project is a smart contract based flight delay insurance, where people can buy insurance for their flight with blockchain. In this contract, people can input their flight ID from their ticket, and they can choose how much they want to pay for the insurance between 0.01-0.06 ether. This contract will allow the customer to paid instantly right after the flight is done (if the delayed condition is fulfilled). In this smart contract, the owner can register a flight company ethereum address so that address can input the flight data and delay events. User can only buy insurance for the registered flight from the registered flight company in this smart contract.
 
 ## Global Variable
